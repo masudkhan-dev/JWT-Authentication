@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { User, Mail, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router";
@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const [showPassword, setShowPassword] = useState();
   const navigate = useNavigate();
-  const { register: registerStorage } = useAuth();
+  const { register: registerStorage, isAuthenticate } = useAuth();
 
   const {
     register,
@@ -41,6 +41,12 @@ const Register = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticate()) {
+      navigate("/dashboard");
+    }
+  }, [navigate, isAuthenticate]);
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100 py-6 sm:py-12">
