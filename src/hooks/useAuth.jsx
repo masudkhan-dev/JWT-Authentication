@@ -17,12 +17,12 @@ const useAuth = () => {
     setToken(token);
     setUserEmail(email);
     setUserName(name);
-    setLoginTime(new Date().toISOString());
+    setLoginTime(new Date().toLocaleString());
 
     ["token", "userEmail", "userName", "loginTime"].map((key, index) =>
       localStorage.setItem(
         key,
-        [token, email, name, new Date().toISOString()][index]
+        [token, email, name, new Date().toLocaleString()][index]
       )
     );
   };
@@ -32,27 +32,15 @@ const useAuth = () => {
     setToken(token);
     setUserEmail(email);
     setUserName(name);
-    setLoginTime(new Date().toISOString());
+    setLoginTime(new Date().toLocaleString());
 
     ["token", "userEmail", "userName", "loginTime"].map((key, index) =>
       localStorage.setItem(
         key,
-        [token, email, name, new Date().toISOString()][index]
+        [token, email, name, new Date().toLocaleString()][index]
       )
     );
   };
-
-  // const logout = () => {
-  //   setToken(null);
-  //   setUserEmail(null);
-  //   setUserName(null);
-  //   setLoginTime(null);
-
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("userEmail");
-  //   localStorage.removeItem("userName");
-  //   localStorage.removeItem("loginTime");
-  // };
 
   const logout = () => {
     setToken(null);

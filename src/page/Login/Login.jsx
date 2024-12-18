@@ -37,6 +37,12 @@ const Login = () => {
       });
       navigate("/dashboard");
     } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message,
+        footer: err.code,
+      });
       console.error(err.message);
     }
   };

@@ -4,6 +4,7 @@ import { User, Mail, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { axiosSecure } from "../../hooks/axiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState();
@@ -21,12 +22,24 @@ const Register = () => {
       const res = await axiosSecure.post("/register", data);
       if (res.data.token) {
         registerStorage(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/dashboard");
       }
     } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+        footer: error.code,
+      });
       console.error(error);
     }
-    console.log(data);
   };
 
   return (

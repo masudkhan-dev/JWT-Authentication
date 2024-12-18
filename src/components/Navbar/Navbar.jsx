@@ -50,13 +50,12 @@ const Navbar = () => {
               <CheckSquare className="h-6 w-6 text-blue-600" />
               <span className="font-bold text-xl text-gray-800">TodoApp</span>
             </motion.div>
-
-            <p className="text-gray-500">
-              Hello,{" "}
-              <span className="font-bold text-gray-500">
-                {userName && userName}
-              </span>
-            </p>
+            {userName && (
+              <p className="text-gray-500">
+                Hello,{" "}
+                <span className="font-bold text-gray-500">{userName}</span>
+              </p>
+            )}
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">

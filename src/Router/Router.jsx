@@ -4,6 +4,7 @@ import Home from "../page/Home/Home";
 import Register from "../page/Register/Register";
 import Login from "../page/Login/Login";
 import Dashboard from "../page/Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = () => {
   return (
@@ -11,7 +12,14 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route>
           <Route path="/register" element={<Register />} />
